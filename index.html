@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAD 6958 – Metropolitan Governance in Seoul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════
+           DESIGN TOKENS
+           ═══════════════════════════════════════ */
+        :root {
+            /* Color */
+            --bg:         #FAFAF7;
+            --surface:    #FFFFFF;
+            --text:       #1C1917;
+            --text-2:     #57534E;
+            --text-3:     #A8A29E;
+            --border:     #E7E5E0;
+            --border-strong: #D6D3CD;
+            --accent:     #FFC904;    /* UCF Gold */
+            --accent-bg:  #FFF9E0;
+            --accent-text:#78350F;
+            --success:    #16A34A;
+            --success-bg: #F0FDF4;
+            --warn:       #D97706;
+            --warn-bg:    #FFFBEB;
+
+            /* Typography */
+            --font-sans:  'DM Sans', system-ui, sans-serif;
+            --font-mono:  'DM Mono', 'Menlo', monospace;
+
+            /* Type scale */
+            --text-display: 2.5rem;    /* 40px */
+            --text-h2:      1.5rem;    /* 24px */
+            --text-h3:      1.175rem;  /* ~19px */
+            --text-body:    1.0625rem; /* 17px */
+            --text-sm:      0.9375rem; /* 15px */
+            --text-xs:      0.8125rem; /* 13px */
+
+            /* Spacing */
+            --space-section: 5rem;     /* 80px between sections */
+            --space-block:   2.5rem;   /* 40px subsection */
+            --space-element: 1.5rem;   /* 24px within */
+            --space-tight:   0.75rem;  /* 12px */
+            --space-xs:      0.5rem;   /* 8px */
+
+            /* Radius */
+            --radius-sm: 3px;
+            --radius-md: 6px;
+
+            /* Layout */
+            --content-width: 720px;
+            --page-width:    960px;
+        }
+
+        /* ═══════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: var(--text-body);
+            line-height: 1.65;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--text); text-underline-offset: 3px; }
+        a:hover { color: var(--accent-text); }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: var(--space-section) 0;
+        }
+
+        /* ═══════════════════════════════════════
+           LAYOUT
+           ═══════════════════════════════════════ */
+        .page { max-width: var(--page-width); margin: 0 auto; padding: 0 1.5rem; }
+        .content { max-width: var(--content-width); }
+
+        /* ═══════════════════════════════════════
+           TOP BAR (UCF brand marker)
+           ═══════════════════════════════════════ */
+        .brand-bar {
+            height: 4px;
+            background: var(--accent);
+        }
+
+        /* ═══════════════════════════════════════
+           STICKY NAV
+           ═══════════════════════════════════════ */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .site-nav__inner {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
+        }
+
+        .site-nav__brand {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .site-nav__links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            overflow-x: auto;
+        }
+
+        .site-nav__links a {
+            display: block;
+            padding: 0 var(--space-tight);
+            font-size: var(--text-sm);
+            color: var(--text-3);
+            text-decoration: none;
+            line-height: 52px;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: color 150ms, border-color 150ms;
+        }
+
+        .site-nav__links a:hover,
+        .site-nav__links a.active {
+            color: var(--text);
+            border-bottom-color: var(--accent);
+        }
+
+        /* ═══════════════════════════════════════
+           HEADER
+           ═══════════════════════════════════════ */
+        .course-header {
+            padding: 3.5rem 0 0;
+        }
+
+        .course-header__meta {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--space-tight);
+        }
+
+        .course-header h1 {
+            font-size: var(--text-display);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: var(--space-element);
+            max-width: 600px;
+        }
+
+        .course-header__desc {
+            color: var(--text-2);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* Key facts row */
+        .key-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-element) 2.5rem;
+            margin-top: var(--space-block);
+            padding-top: var(--space-element);
+            border-top: 1px solid var(--border);
+        }
+
+        .key-fact {
+            min-width: 140px;
+        }
+
+        .key-fact__label {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 2px;
+        }
+
+        .key-fact__value {
+            font-size: var(--text-body);
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .key-fact__value a {
+            text-decoration: underline;
+            text-decoration-color: var(--border-strong);
+        }
+
+
+        /* ═══════════════════════════════════════
+           SECTION HEADINGS
+           ═══════════════════════════════════════ */
+        .section-title {
+            font-size: var(--text-h2);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: var(--space-element);
+        }
+
+        .section-subtitle {
+            font-size: var(--text-sm);
+            color: var(--text-3);
+            margin-top: -0.75rem;
+            margin-bottom: var(--space-element);
+        }
+
+        /* ═══════════════════════════════════════
+           SCHEDULE TABLE
+           ═══════════════════════════════════════ */
+        .schedule {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule th {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            font-weight: 500;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            text-align: left;
+            padding: var(--space-tight) 0;
+            border-bottom: 2px solid var(--text);
+        }
+
+        .schedule td {
+            padding: var(--space-tight) 0;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            font-size: var(--text-body);
+        }
+
+        .schedule tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule .date-col {
+            width: 140px;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            white-space: nowrap;
+            padding-right: 1.5rem;
+        }
+
+        .schedule .event-title {
+            font-weight: 600;
+        }
+
+        .schedule .event-detail {
+            font-size: var(--text-sm);
+            color: var(--text-2);
+            margin-top: 2px;
+        }
+
+        .schedule .event-mode {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--text-3);
+        }
+
+        /* Highlight row for Seoul trip */
+        .schedule .row-highlight td {
+            background: var(--accent-bg);
+            padding-left: var(--space-tight);
+            padding-right: var(--space-tight);
+        }
+
+        .schedule .row-highlight td:first-child {
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Deadline badge */
+        .badge-deadline {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            font-weight: 500;
+            color: var(--warn);
+            background: var(--warn-bg);
+            padding: 1px 8px;
+            border-radius: var(--radius-sm);
+            margin-top: 4px;
+        }
+
+        /* ═══════════════════════════════════════
+           GRADING TABLE
+           ═══════════════════════════════════════ */
+        .grade-table {
+            width: 100%;
+            max-width: 400px;
+            border-collapse: collapse;
+        }
+
+        .grade-table th {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            font-weight: 500;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            text-align: left;
+            padding: var(--space-xs) 0;
+            border-bottom: 2px solid var(--text);
+        }
+
+        .grade-table th:last-child { text-align: right; }
+
+        .grade-table td {
+            padding: var(--space-xs) 0;
+            border-bottom: 1px solid var(--border);
+            font-size: var(--text-body);
+        }
+
+        .grade-table td:last-child {
+            text-align: right;
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .grade-table tr:last-child td {
+            border-bottom: none;
+            font-weight: 700;
+        }
+
+        /* ═══════════════════════════════════════
+           PROJECT OPTIONS
+           ═══════════════════════════════════════ */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-top: var(--space-element);
+        }
+
+        .option-block {
+            background: var(--surface);
+            padding: var(--space-element);
+        }
+
+        .option-block__label {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-3);
+            margin-bottom: var(--space-xs);
+        }
+
+        .option-block h3 {
+            font-size: var(--text-h3);
+            font-weight: 700;
+            margin-bottom: var(--space-tight);
+        }
+
+        .option-block p, .option-block li {
+            font-size: var(--text-sm);
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        .option-block ul, .option-block ol {
+            padding-left: 1.25rem;
+            margin-top: var(--space-xs);
+        }
+
+        .option-block li { margin-bottom: 4px; }
+
+        /* ═══════════════════════════════════════
+           READINGS
+           ═══════════════════════════════════════ */
+        .reading-group {
+            margin-bottom: var(--space-block);
+        }
+
+        .reading-group:last-child { margin-bottom: 0; }
+
+        .reading-group__title {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            font-weight: 500;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: var(--space-tight);
+        }
+
+        .reading-list {
+            list-style: none;
+            counter-reset: reading;
+        }
+
+        .reading-list li {
+            counter-increment: reading;
+            padding: var(--space-tight) 0;
+            border-bottom: 1px solid var(--border);
+            font-size: var(--text-sm);
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        .reading-list li:last-child { border-bottom: none; }
+
+        .reading-list li::before {
+            content: counter(reading) ".";
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--text-3);
+            margin-right: 8px;
+        }
+
+        .reading-list em { font-style: italic; }
+
+        /* ═══════════════════════════════════════
+           MATERIALS LIST
+           ═══════════════════════════════════════ */
+        .materials-list {
+            list-style: none;
+        }
+
+        .materials-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-tight) 0;
+            border-bottom: 1px solid var(--border);
+            gap: 1rem;
+        }
+
+        .materials-list li:last-child { border-bottom: none; }
+
+        .mat-info { flex: 1; }
+
+        .mat-title {
+            font-weight: 600;
+            font-size: var(--text-body);
+        }
+
+        .mat-date {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--text-3);
+        }
+
+        .badge-status {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+        }
+
+        .badge-status--available {
+            color: var(--success);
+            background: var(--success-bg);
+        }
+
+        .badge-status--upcoming {
+            color: var(--text-3);
+            background: var(--bg);
+            border: 1px solid var(--border);
+        }
+
+        /* ═══════════════════════════════════════
+           EMPTY STATE (Student Reports)
+           ═══════════════════════════════════════ */
+        .empty-state {
+            border: 1px dashed var(--border-strong);
+            border-radius: var(--radius-md);
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .empty-state p {
+            font-size: var(--text-sm);
+            color: var(--text-3);
+        }
+
+        .empty-state strong {
+            display: block;
+            font-weight: 600;
+            color: var(--text-2);
+            margin-bottom: 4px;
+        }
+
+        /* ═══════════════════════════════════════
+           LINKS GRID
+           ═══════════════════════════════════════ */
+        .links-list {
+            list-style: none;
+        }
+
+        .links-list li {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .links-list li:last-child { border-bottom: none; }
+
+        .links-list a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-tight) 0;
+            text-decoration: none;
+            color: var(--text);
+            transition: color 150ms;
+        }
+
+        .links-list a:hover {
+            color: var(--accent-text);
+        }
+
+        .link-main {
+            display: block;
+            font-weight: 600;
+            font-size: var(--text-body);
+        }
+
+        .link-desc {
+            display: block;
+            font-size: var(--text-sm);
+            color: var(--text-3);
+        }
+
+        .link-arrow {
+            font-size: var(--text-sm);
+            color: var(--text-3);
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════
+           COLLAPSIBLE (Policies)
+           ═══════════════════════════════════════ */
+        .collapsible summary {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: var(--text-body);
+            padding: var(--space-tight) 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            user-select: none;
+        }
+
+        .collapsible summary::-webkit-details-marker { display: none; }
+
+        .collapsible summary .chevron {
+            transition: transform 200ms;
+            font-size: var(--text-xs);
+            color: var(--text-3);
+        }
+
+        .collapsible[open] summary .chevron {
+            transform: rotate(180deg);
+        }
+
+        .collapsible .details-body {
+            padding: var(--space-element) 0 var(--space-tight);
+            font-size: var(--text-sm);
+            color: var(--text-2);
+            line-height: 1.7;
+        }
+
+        .collapsible .details-body h4 {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--text);
+            margin: var(--space-element) 0 var(--space-xs);
+        }
+
+        .collapsible .details-body h4:first-child { margin-top: 0; }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════ */
+        .site-footer {
+            margin-top: var(--space-section);
+            padding: var(--space-block) 0;
+            border-top: 1px solid var(--border);
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--text-3);
+        }
+
+        .site-footer a {
+            color: var(--text-2);
+        }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════ */
+        @media (max-width: 640px) {
+            :root {
+                --text-display: 1.75rem;
+                --space-section: 3.5rem;
+                --space-block: 2rem;
+            }
+
+            .site-nav__brand { font-size: var(--text-xs); }
+            .site-nav__links a { padding: 0 var(--space-xs); font-size: var(--text-xs); }
+
+            .options-grid { grid-template-columns: 1fr; }
+
+            .schedule .date-col {
+                width: 90px;
+                font-size: var(--text-xs);
+                padding-right: 0.75rem;
+            }
+
+            .schedule td { font-size: var(--text-sm); }
+
+            .key-facts { gap: var(--space-tight) 1.5rem; }
+        }
+
+        /* Focus for accessibility */
+        a:focus-visible, summary:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+    </style>
+</head>
+<body>
+
+<!-- UCF Gold brand bar -->
+<div class="brand-bar" role="presentation"></div>
+
+<!-- Navigation -->
+<nav class="site-nav" role="navigation" aria-label="Course navigation">
+    <div class="site-nav__inner">
+        <a href="#" class="site-nav__brand">PAD 6958</a>
+        <ul class="site-nav__links">
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#syllabus">Syllabus</a></li>
+            <li><a href="#materials">Materials</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#links">Links</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="page">
+<main class="content">
+
+    <!-- ─── HEADER ─── -->
+    <header class="course-header" id="about">
+        <p class="course-header__meta">UCF School of Public Administration &middot; Summer 2026</p>
+        <h1>Governance Field Study: Metropolitan Governance in Seoul</h1>
+        <p class="course-header__desc">
+            A graduate field study course examining Seoul Metropolitan Government's policies, governance reforms, and city management. Students participate in the Seoul Case Study Program (SCSP) — a week-long immersive experience in Seoul hosted by SMG and the University of Seoul.
+        </p>
+
+        <div class="key-facts">
+            <div class="key-fact">
+                <div class="key-fact__label">Instructor</div>
+                <div class="key-fact__value"><a href="https://luanpao82.github.io/" target="_blank">Dr. Seongho An</a></div>
+            </div>
+            <div class="key-fact">
+                <div class="key-fact__label">Seoul Trip</div>
+                <div class="key-fact__value">May 16 – 22, 2026</div>
+            </div>
+            <div class="key-fact">
+                <div class="key-fact__label">Credits</div>
+                <div class="key-fact__value">3</div>
+            </div>
+            <div class="key-fact">
+                <div class="key-fact__label">Contact</div>
+                <div class="key-fact__value"><a href="mailto:Seongho.An@ucf.edu">Seongho.An@ucf.edu</a></div>
+            </div>
+            <div class="key-fact">
+                <div class="key-fact__label">Office</div>
+                <div class="key-fact__value">DPAC 448D</div>
+            </div>
+        </div>
+    </header>
+
+    <hr>
+
+    <!-- ─── SCHEDULE ─── -->
+    <section id="schedule">
+        <h2 class="section-title">Schedule</h2>
+
+        <table class="schedule">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="date-col">Apr 22 (Wed)</td>
+                    <td>
+                        <div class="event-title">Introduction &amp; Understanding Korea</div>
+                        <div class="event-mode">Zoom &middot; 7:00 – 9:00 PM ET</div>
+                        <div class="event-detail">Study Abroad orientation, course logistics, Korean public administration, culture &amp; language</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-col">May 9 (Sat)</td>
+                    <td>
+                        <div class="event-title">Research Proposals &amp; Trip Prep</div>
+                        <div class="event-mode">In-Class &middot; 10:00 AM – 12:00 PM</div>
+                        <div class="event-detail">Proposal presentations, SMG overview, transportation, final trip arrangements</div>
+                        <span class="badge-deadline">Proposal due 11:59 PM</span>
+                    </td>
+                </tr>
+                <tr class="row-highlight">
+                    <td class="date-col">May 16 – 22</td>
+                    <td>
+                        <div class="event-title">Seoul Case Study Program (SCSP)</div>
+                        <div class="event-mode">Seoul, South Korea</div>
+                        <div class="event-detail">Lectures, field visits, cultural experiences &amp; group presentations hosted by SMG &amp; University of Seoul. ~40 hours of classroom and field work.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-col">May 31 (Sat)</td>
+                    <td>
+                        <div class="event-title">Research Presentations &amp; Wrap-Up</div>
+                        <div class="event-mode">Zoom &middot; 10:00 AM – 12:00 PM ET</div>
+                        <div class="event-detail">Research progress presentations, peer feedback, concluding remarks</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-col">Jun 20 (Fri)</td>
+                    <td>
+                        <div class="event-title">Final Research Project</div>
+                        <span class="badge-deadline">Due 11:59 PM via Webcourses</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-col">Jun 22 (Sun)</td>
+                    <td>
+                        <div class="event-title">Reflection Paper</div>
+                        <span class="badge-deadline">Due 11:59 PM via Webcourses</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr>
+
+    <!-- ─── SYLLABUS ─── -->
+    <section id="syllabus">
+        <h2 class="section-title">Syllabus</h2>
+
+        <!-- Grading -->
+        <h3 style="font-size:var(--text-h3); font-weight:700; margin-bottom:var(--space-tight);">Evaluation</h3>
+
+        <table class="grade-table">
+            <thead>
+                <tr><th>Assignment</th><th>Weight</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Welcome Assignment</td><td>2%</td></tr>
+                <tr><td>Attendance &amp; Participation</td><td>33%</td></tr>
+                <tr><td>Research Proposal</td><td>20%</td></tr>
+                <tr><td>Final Research Project</td><td>40%</td></tr>
+                <tr><td>Reflection Paper</td><td>5%</td></tr>
+                <tr><td>Total</td><td>100%</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Final Project Options -->
+        <div style="margin-top: var(--space-block);">
+            <h3 style="font-size:var(--text-h3); font-weight:700; margin-bottom:var(--space-xs);">Final Research Project</h3>
+            <p style="font-size:var(--text-sm); color:var(--text-2); margin-bottom:var(--space-tight);">Choose one format. Both require a comparative analysis of an SMG policy or management issue with U.S. practices.</p>
+
+            <div class="options-grid">
+                <div class="option-block">
+                    <div class="option-block__label">Option A</div>
+                    <h3>Written Report</h3>
+                    <p>15–20 pages, double spaced. Literature review with 15–20 scholarly sources, methodology, findings, and policy implications. APA 7th edition.</p>
+                </div>
+                <div class="option-block">
+                    <div class="option-block__label">Option B</div>
+                    <h3>Video Report</h3>
+                    <p>15–20 minute unlisted YouTube video. Must include field footage from Seoul.</p>
+                    <ol>
+                        <li>Introduction (2–3 min)</li>
+                        <li>Literature Review (3–5 min)</li>
+                        <li>Seoul Case Analysis (5–7 min)</li>
+                        <li>U.S. Comparison (3–4 min)</li>
+                        <li>Conclusion (1–2 min)</li>
+                    </ol>
+                    <p style="margin-top:var(--space-xs);">Submit with a 2–3 page supplementary document (APA references, 10+ sources, 250-word abstract).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Readings -->
+        <div style="margin-top: var(--space-block);">
+            <h3 style="font-size:var(--text-h3); font-weight:700; margin-bottom:var(--space-element);">Required Readings</h3>
+
+            <div class="reading-group">
+                <div class="reading-group__title">Session 1 &mdash; April 22</div>
+                <ul class="reading-list">
+                    <li>Kim, S., Kim, H. J., &amp; Lee, H. (2009). An institutional analysis of an e-government system for anti-corruption: The case of OPEN. <em>Government Information Quarterly, 26</em>(1), 42–50.</li>
+                    <li>Kim, P. S. (2000). Administrative reform in the Korean central government: A case study of the Dae Jung Kim administration. <em>Public Performance &amp; Management Review, 24</em>(2), 145–160.</li>
+                    <li>Koo, H. (2002). Civil society and democracy in South Korea. <em>The Good Society, 11</em>(2), 40–45.</li>
+                    <li>Hangeul (Korean alphabet) — <a href="https://www.youtube.com/watch?v=2aDPpssj0h0" target="_blank" rel="noopener">YouTube video</a></li>
+                </ul>
+            </div>
+
+            <div class="reading-group">
+                <div class="reading-group__title">Session 2 &mdash; May 9</div>
+                <ul class="reading-list">
+                    <li>Seoul Metropolitan Government — <a href="http://english.seoul.go.kr/" target="_blank" rel="noopener">english.seoul.go.kr</a></li>
+                    <li>Park, W.-S. (2014). In Seoul, the citizens are the mayor. <em>Public Administration Review, 74</em>(4), 442–443.</li>
+                    <li>Kim, K. S., Cheon, S. H., &amp; Lim, S. J. (2011). Performance assessment of bus transport reform in Seoul. <em>Transportation, 38</em>(5), 719–735.</li>
+                    <li>Min, B. H., An, S., &amp; Ki, N. (2024). Understanding the dynamics of Civil Society Organization responses in the cross-sector collaboration process with a government partner. <em>Nonprofit Management and Leadership, 35</em>(2), 433–460.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Policies (collapsible) -->
+        <div style="margin-top: var(--space-block);">
+            <h3 style="font-size:var(--text-h3); font-weight:700; margin-bottom:var(--space-tight);">Course Policies</h3>
+
+            <details class="collapsible">
+                <summary>Academic Honesty <span class="chevron">&#9662;</span></summary>
+                <div class="details-body">
+                    All work must be original. This course uses Turnitin — similarity scores should remain within 10%. Plagiarism includes unattributed copying, inadequate paraphrasing, and resubmitting work from other courses. Violations are reported to the Office of Student Conduct and may result in course failure.
+                </div>
+            </details>
+            <details class="collapsible">
+                <summary>Accessibility <span class="chevron">&#9662;</span></summary>
+                <div class="details-body">
+                    Students requiring accommodations must register with Student Accessibility Services (Ferrell Commons 7F, Room 185, 407-823-2371) before contacting the professor. This syllabus is available in alternate formats upon request.
+                </div>
+            </details>
+            <details class="collapsible">
+                <summary>Communication <span class="chevron">&#9662;</span></summary>
+                <div class="details-body">
+                    Official communication is through Webcourses email. Include a descriptive subject line. Expect responses within 24–48 hours on weekdays. Weekend and evening responses are not guaranteed.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- ─── MATERIALS ─── -->
+    <section id="materials">
+        <h2 class="section-title">Course Materials</h2>
+
+        <ul class="materials-list">
+            <li>
+                <div class="mat-info">
+                    <div class="mat-title">Syllabus</div>
+                    <div class="mat-date">PAD 6958 &middot; Summer 2026</div>
+                </div>
+                <a href="PAD6958_Syllabus_Summer2026.pdf" target="_blank" class="badge-status badge-status--available" style="text-decoration:none; cursor:pointer;">PDF</a>
+            </li>
+            <li>
+                <div class="mat-info">
+                    <div class="mat-title">Session 1 — Introduction &amp; Understanding Korea</div>
+                    <div class="mat-date">April 22, 2026</div>
+                </div>
+                <span class="badge-status badge-status--upcoming">Upcoming</span>
+            </li>
+            <li>
+                <div class="mat-info">
+                    <div class="mat-title">Session 2 — Seoul Metropolitan City &amp; Trip Prep</div>
+                    <div class="mat-date">May 9, 2026</div>
+                </div>
+                <span class="badge-status badge-status--upcoming">Upcoming</span>
+            </li>
+            <li>
+                <div class="mat-info">
+                    <div class="mat-title">Session 3 — Research Presentations</div>
+                    <div class="mat-date">May 31, 2026</div>
+                </div>
+                <span class="badge-status badge-status--upcoming">Upcoming</span>
+            </li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <!-- ─── STUDENT REPORTS ─── -->
+    <section id="reports">
+        <h2 class="section-title">Student Reports</h2>
+
+        <div class="empty-state">
+            <p>
+                <strong>Reports will appear here after June 20, 2026.</strong>
+                Written reports and YouTube video reports will be posted after the submission deadline.
+            </p>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- ─── LINKS ─── -->
+    <section id="links">
+        <h2 class="section-title">Links</h2>
+
+        <ul class="links-list">
+            <li>
+                <a href="https://isus.uos.ac.kr/isus/web/contents/ISUS_PROGRAMS_03_01" target="_blank" rel="noopener">
+                    <span>
+                        <span class="link-main">Seoul Case Study Program (SCSP)</span>
+                        <span class="link-desc">International School of Urban Sciences, University of Seoul</span>
+                    </span>
+                    <span class="link-arrow">&nearr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://english.seoul.go.kr/" target="_blank" rel="noopener">
+                    <span>
+                        <span class="link-main">Seoul Metropolitan Government</span>
+                        <span class="link-desc">Official English website</span>
+                    </span>
+                    <span class="link-arrow">&nearr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://seoulsolution.kr/en" target="_blank" rel="noopener">
+                    <span>
+                        <span class="link-main">Seoul Solution</span>
+                        <span class="link-desc">SMG policy research and case studies</span>
+                    </span>
+                    <span class="link-arrow">&nearr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.ucf.edu/online/colleges/college-of-community-innovation-and-education/school-of-public-administration/" target="_blank" rel="noopener">
+                    <span>
+                        <span class="link-main">UCF School of Public Administration</span>
+                        <span class="link-desc">College of Community Innovation and Education</span>
+                    </span>
+                    <span class="link-arrow">&nearr;</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+
+</main>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+    <div class="page">
+        <p>PAD 6958 &middot; Summer 2026 &middot; University of Central Florida</p>
+        <p><a href="https://luanpao82.github.io/" target="_blank">Dr. Seongho An</a> &middot; <a href="mailto:Seongho.An@ucf.edu">Seongho.An@ucf.edu</a> &middot; (407) 823-5832</p>
+        <p style="margin-top: var(--space-tight);">In partnership with Seoul Metropolitan Government &amp; University of Seoul</p>
+    </div>
+</footer>
+
+<!-- Nav active state on scroll -->
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                document.querySelectorAll('.site-nav__links a').forEach(a => {
+                    a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    document.querySelectorAll('section[id], header[id]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
