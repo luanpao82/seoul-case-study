@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 1 — Introduction &amp; Understanding Korea | PAD 6958</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@5.1.0/dist/theme/white.css">
+
+<style>
+:root {
+  --gold: #FFC904;
+  --gold-dk: #D4A900;
+  --gold-soft: rgba(255,201,4,0.15);
+  --dark: #1C1917;
+  --dark-2: #292524;
+  --bg: #FAFAF7;
+  --surface: #FFFFFF;
+  --text: #1C1917;
+  --muted: #78716C;
+  --line: #E7E5E4;
+  --subtle: #F5F5F0;
+  --korean: #B91C1C;
+  --korean-bright: #DC2626;
+  --translate: #16A34A;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+}
+
+html, body { background: var(--bg); }
+
+.reveal-viewport { background: var(--bg); }
+.reveal {
+  font-family: var(--font-sans);
+  color: var(--text);
+  font-size: 20px;
+}
+.reveal .slides { text-align: left; }
+.reveal .slides section {
+  padding: 0 !important;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.reveal .slides > section, .reveal .slides > section > section {
+  top: 0 !important;
+}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  text-transform: none;
+  color: var(--text);
+  text-align: left;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.reveal p, .reveal li { color: var(--muted); line-height: 1.55; }
+.reveal strong { color: var(--text); font-weight: 600; }
+.reveal em { font-style: italic; }
+.reveal ::-moz-selection { background: var(--gold); color: var(--dark); }
+.reveal ::selection { background: var(--gold); color: var(--dark); }
+.reveal ul, .reveal ol { margin-left: 0; }
+
+/* ───── Shared slide container ───── */
+.frame {
+  width: 100%;
+  height: 100%;
+  padding: 64px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  box-sizing: border-box;
+  position: relative;
+}
+.frame.dark { background: var(--dark); color: var(--bg); }
+.frame.dark h1, .frame.dark h2, .frame.dark h3, .frame.dark h4 { color: var(--bg); }
+.frame.dark p, .frame.dark li { color: rgba(250,250,247,0.7); }
+.frame.dark strong { color: var(--bg); }
+.frame.dark .tag { color: var(--gold); }
+
+.frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+}
+.frame.dark::before {
+  background: linear-gradient(90deg, var(--gold), #FFE27A, var(--gold));
+  height: 4px;
+}
+.frame.no-bar::before { display: none; }
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.lead {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 780px;
+  font-weight: 400;
+}
+
+/* ───── Photo background slides ───── */
+.photo-bg {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.photo-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(28,25,23,0.85) 0%, rgba(28,25,23,0.6) 50%, rgba(28,25,23,0.4) 100%);
+  z-index: 0;
+}
+.photo-bg > * { position: relative; z-index: 1; }
+.photo-bg h1, .photo-bg h2, .photo-bg h3, .photo-bg p, .photo-bg span, .photo-bg div { position: relative; z-index: 1; }
+
+.photo-bg.overlay-heavy::after {
+  background: linear-gradient(135deg, rgba(28,25,23,0.92) 0%, rgba(28,25,23,0.75) 50%, rgba(28,25,23,0.55) 100%);
+}
+.photo-bg.overlay-center::after {
+  background: radial-gradient(ellipse at center, rgba(28,25,23,0.8) 0%, rgba(28,25,23,0.5) 100%);
+}
+
+/* Photo credit */
+.photo-credit {
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,0.3);
+  z-index: 2;
+  letter-spacing: 0.04em;
+}
+
+/* ───── Section divider ───── */
+.s-divider {
+  justify-content: center;
+  align-items: flex-start;
+}
+.s-divider .gold-bar {
+  width: 6px;
+  height: 56px;
+  background: var(--gold);
+  margin-bottom: 24px;
+  border-radius: 2px;
+}
+.s-divider h2 {
+  font-size: 72px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* ───── Hero slide ───── */
+.s-hero h1 {
+  font-family: var(--font-serif);
+  font-size: 72px;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+.s-hero h1 .gold-text { color: var(--gold); font-style: italic; }
+.s-hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.s-hero .eyebrow::before {
+  content: '';
+  width: 36px; height: 2px; background: var(--gold);
+}
+.s-hero .sub {
+  font-size: 19px;
+  color: rgba(250,250,247,0.6);
+  max-width: 700px;
+  line-height: 1.55;
+  margin-top: 16px;
+}
+.s-hero .meta {
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(250,250,247,0.4);
+  letter-spacing: 0.08em;
+  line-height: 2;
+}
+
+/* ───── Footer ───── */
+.reveal .slides section .deck-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 80px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.frame.dark .deck-footer { color: rgba(250,250,247,0.3); }
+.photo-bg .deck-footer { color: rgba(250,250,247,0.3); }
+
+/* ───── Content slides ───── */
+.content-slide h2 { font-size: 44px; margin-bottom: 16px; line-height: 1.1; }
+.content-slide h3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text);
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.content-slide ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.content-slide ul li {
+  padding: 4px 0 4px 20px;
+  position: relative;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.content-slide ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.content-slide ul ul li { font-size: 16px; }
+.content-slide ul ul li::before { width: 4px; height: 4px; background: var(--line); top: 12px; }
+
+/* ───── Student roster ───── */
+.roster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 32px;
+  margin-top: 12px;
+}
+.roster-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+.roster-name { font-weight: 600; color: var(--text); white-space: nowrap; }
+.roster-program {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ───── Grade table ───── */
+.grade-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 140px;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 17px;
+  align-items: baseline;
+}
+.grade-row.header {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 6px;
+}
+.grade-weight {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-align: right;
+}
+.grade-due {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.grade-row:last-child { font-weight: 700; border-bottom: none; }
+
+/* ───── Topic pills ───── */
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.pill {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: var(--text);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.pill:hover { border-color: var(--gold); background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,201,4,0.2); }
+
+/* ───── Schedule table ───── */
+.sched-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  line-height: 1.45;
+}
+.sched-day {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+.sched-title { font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.sched-detail { font-size: 14px; color: var(--muted); }
+
+/* ───── Korean language styling ───── */
+.kr {
+  color: var(--korean);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.05em;
+}
+.kr-big {
+  color: var(--korean);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 28px;
+  display: block;
+  margin: 8px 0;
+}
+.kr-xl {
+  color: var(--korean);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 36px;
+  display: block;
+  margin: 10px 0;
+}
+.tr {
+  color: var(--translate);
+  font-size: 15px;
+  display: block;
+  margin-top: 2px;
+}
+.level-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+
+/* ───── Two column layout ───── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 12px;
+}
+.two-col-tight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+/* ───── Expectation cards ───── */
+.expect-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.expect-card:hover { transform: translateX(4px); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.expect-card strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.expect-card p {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ───── Info box ───── */
+.info-box {
+  background: var(--gold-soft);
+  border: 1px solid rgba(255,201,4,0.3);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 12px;
+}
+.info-box strong { color: var(--dark); }
+.info-box p { color: var(--muted); font-size: 15px; margin: 4px 0 0; }
+
+/* ───── Closing slide ───── */
+.s-closing {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.s-closing h2 {
+  font-size: 72px;
+  line-height: 1.05;
+  color: var(--bg);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.s-closing .em { color: var(--gold); font-style: italic; }
+.s-closing .cp {
+  color: rgba(250,250,247,0.6);
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  line-height: 1.55;
+  text-align: center;
+}
+.s-closing .signature {
+  margin-top: 36px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(250,250,247,0.4);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ───── Culture norms grid ───── */
+.norm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+.norm-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+.norm-item:hover { border-color: var(--gold); background: var(--gold-soft); }
+
+/* ───── Progress bar ───── */
+.reveal .progress {
+  background: rgba(255,201,4,0.12);
+  color: var(--gold);
+  height: 4px;
+}
+.reveal .progress span { background: var(--gold); }
+.reveal .controls { color: var(--muted); }
+
+/* ───── Korean phrase card ───── */
+.phrase-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.phrase-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.phrase-card .english {
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+/* ───── Compact content ───── */
+.compact-list li { padding: 2px 0 2px 18px; font-size: 16px; }
+.compact-list li::before { top: 10px; }
+
+/* ───── Scroll fix ───── */
+.frame.scroll-ok { overflow-y: auto; }
+
+/* ═══════ ENHANCED STYLES ═══════ */
+
+/* Stat cards row */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.stat-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+  font-style: italic;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(250,250,247,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 24px;
+  backdrop-filter: blur(12px);
+}
+
+/* Split layout with image */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+.split-content {
+  padding: 64px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg);
+  position: relative;
+}
+.split-content::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+}
+.split-image {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.split-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 20%);
+}
+
+/* Video embed container */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  margin-top: 16px;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  margin-top: 12px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--line);
+}
+.timeline-item {
+  position: relative;
+  padding: 8px 0 16px 0;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--bg);
+}
+.timeline-item.active::before {
+  background: var(--korean);
+  box-shadow: 0 0 0 4px rgba(185,28,28,0.2);
+}
+
+/* Korean pronunciation card with audio hint */
+.pronun-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.pronun-card:hover {
+  border-color: var(--korean);
+  box-shadow: 0 4px 20px rgba(185,28,28,0.1);
+}
+.pronun-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--korean), var(--gold));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.pronun-card:hover::after { opacity: 1; }
+
+/* Animated number counter */
+.counter {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Map / image card */
+.img-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.img-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Floating badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--gold-soft);
+  color: var(--gold-dk);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+.badge.red {
+  background: rgba(185,28,28,0.1);
+  color: var(--korean);
+}
+
+/* Slide transition override for photo slides */
+.photo-bg .gold-bar { background: var(--gold); }
+
+/* Reveal.js fragment animations */
+.reveal .slides section .fragment.grow-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.reveal .slides section .fragment.grow-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Korean hangul display */
+.hangul-display {
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--korean);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+.hangul-romanize {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Bowing animation */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.pulse-hint {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+/* Photo divider specific text shadow */
+.photo-bg h2 {
+  text-shadow: 0 2px 40px rgba(0,0,0,0.5);
+}
+.photo-bg .lead {
+  color: rgba(250,250,247,0.7);
+}
+.photo-bg .gold-bar {
+  box-shadow: 0 0 20px rgba(255,201,4,0.4);
+}
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ═══════ 1. HERO — Seoul Skyline ═══════ -->
+<section>
+  <div class="frame dark s-hero no-bar photo-bg" style="background-image: url('https://images.unsplash.com/photo-1546874177-9e664107314e?auto=format&fit=crop&w=1920&q=80');">
+    <span class="eyebrow">PAD 6958 · Session 1 · April 22, 2026</span>
+    <h1>
+      Introduction &amp;<br>
+      Understanding <span class="gold-text">Korea</span>
+    </h1>
+    <p class="sub">Governance Field Study: Metropolitan Governance in Seoul<br>Seoul Case Study Program (SCSP) · Summer 2026</p>
+    <div class="meta">
+      Dr. Seongho An · Assistant Professor<br>
+      UCF School of Public Administration<br>
+      Zoom · 7:00 – 9:00 PM ET
+    </div>
+
+    <div class="stat-row" style="margin-top: 48px; max-width: 700px;">
+      <div class="stat-card">
+        <div class="stat-number">8</div>
+        <div class="stat-label">Days in Seoul</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">35th</div>
+        <div class="stat-label">SCSP Cohort</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8</div>
+        <div class="stat-label">Participants</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Universities</div>
+      </div>
+    </div>
+
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+    <span class="photo-credit">Photo: Yohan Cho / Unsplash</span>
+  </div>
+</section>
+
+<!-- ═══════ 2. OUTLINE ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Tonight's agenda</div>
+    <h2 class="display">Outline</h2>
+    <ul style="font-size: 22px; max-width: 600px;">
+      <li><strong>Introduction</strong>
+        <ul>
+          <li>People</li>
+          <li>Course requirements &amp; research project</li>
+        </ul>
+      </li>
+      <li style="margin-top: 8px;"><strong>Travel Plan &amp; Logistics</strong></li>
+      <li style="margin-top: 8px;"><strong>Korean Government &amp; Governance</strong></li>
+      <li style="margin-top: 8px;"><strong>Basic Korean Language</strong></li>
+      <li style="margin-top: 8px;"><strong>South Korean Culture</strong></li>
+      <li style="margin-top: 8px;"><strong>Session 2 Date &amp; Next Steps</strong></li>
+    </ul>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 3. SECTION: INTRODUCTION ═══════ -->
+<section>
+  <div class="frame s-divider">
+    <div class="gold-bar"></div>
+    <h2>Introduction</h2>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 4. PEOPLE ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Introduction</div>
+    <h2>People</h2>
+
+    <h3>Course Instructor / Study Abroad Leader</h3>
+    <p style="font-size: 18px; color: var(--text); margin-bottom: 16px;">
+      <strong>Seongho An</strong> (&#50504;&#49457;&#54840;, Ahn Seong-ho), Ph.D., Assistant Professor
+    </p>
+
+    <h3>Participants</h3>
+    <div class="roster">
+      <div class="roster-item"><span class="roster-name">Benedict, Ashley</span> <span class="roster-program">MECM</span></div>
+      <div class="roster-item"><span class="roster-name">Botelho, Rhianna Leigh</span> <span class="roster-program">MECM</span></div>
+      <div class="roster-item"><span class="roster-name">Landrum, Cesar David</span> <span class="roster-program">Urban Planning MS</span></div>
+      <div class="roster-item"><span class="roster-name">Madden Anderson, Lindy</span> <span class="roster-program">MPA</span></div>
+      <div class="roster-item"><span class="roster-name">Paniagua, Gianna</span> <span class="roster-program">MPP</span></div>
+      <div class="roster-item"><span class="roster-name">Perez, Imirio</span> <span class="roster-program">Urban Planning MS</span></div>
+      <div class="roster-item"><span class="roster-name">Prionti, Suchana</span> <span class="roster-program">MPP</span></div>
+      <div class="roster-item"><span class="roster-name">Slaughter, Selena Jo</span> <span class="roster-program">Sociology BS</span></div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 5. COURSE REQUIREMENTS ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Introduction</div>
+    <h2>Course Requirements</h2>
+
+    <div style="max-width: 680px;">
+      <div class="grade-row header">
+        <span>Assignment</span><span style="text-align:right;">Weight</span><span>Due</span>
+      </div>
+      <div class="grade-row">
+        <span>Welcome Assignment</span><span class="grade-weight">2%</span><span class="grade-due"></span>
+      </div>
+      <div class="grade-row">
+        <span><strong>Research Proposal</strong><br><span style="font-size:14px;color:var(--muted);">2 pages, double spaced &middot; topic, data, plan</span></span>
+        <span class="grade-weight">20%</span><span class="grade-due">Session 2</span>
+      </div>
+      <div class="grade-row">
+        <span><strong>Final Research Project</strong><br><span style="font-size:14px;color:var(--muted);">Option A: 15-20 pp written &middot; Option B: 15-20 min video</span></span>
+        <span class="grade-weight">40%</span><span class="grade-due">Jun 20</span>
+      </div>
+      <div class="grade-row">
+        <span><strong>Reflection Paper</strong><br><span style="font-size:14px;color:var(--muted);">2-3 pages, free style reflection on the trip</span></span>
+        <span class="grade-weight">5%</span><span class="grade-due">Jun 22</span>
+      </div>
+      <div class="grade-row">
+        <span>Attendance &amp; Participation</span><span class="grade-weight">33%</span><span class="grade-due">Ongoing</span>
+      </div>
+      <div class="grade-row">
+        <span>Total</span><span class="grade-weight">100%</span><span class="grade-due"></span>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 5b. RESEARCH PROPOSAL DETAIL ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Introduction</div>
+    <h2>Research Proposal <span style="font-family:var(--font-mono);font-size:20px;color:var(--gold);">20%</span></h2>
+    <p class="lead" style="margin-bottom: 16px;">Based on course readings, develop a 2-page project proposal (double spaced) outlining your final research project.</p>
+    <div class="two-col" style="max-width: 900px;">
+      <div>
+        <h3>What to Include</h3>
+        <ul class="compact-list">
+          <li><strong>Topic of study</strong> &mdash; an SMG policy or management issue</li>
+          <li><strong>Data or information needed</strong> from Seoul Municipal Government</li>
+          <li><strong>Plan of action</strong> for completing the project</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Submission</h3>
+        <ul class="compact-list">
+          <li>Via <strong>Webcourses</strong></li>
+          <li>Due: <strong>11:59 PM on Session 2 date (TBD tonight)</strong></li>
+          <li>Late proposals will not be accepted</li>
+        </ul>
+        <div class="info-box" style="margin-top: 12px; padding: 12px 16px;">
+          <strong>Tip:</strong>
+          <p>You will present your proposal informally at Session 2 for feedback before the trip.</p>
+        </div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 5c. FINAL RESEARCH PROJECT DETAIL ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Introduction</div>
+    <h2>Final Research Project <span style="font-family:var(--font-mono);font-size:20px;color:var(--gold);">40%</span></h2>
+    <p class="lead" style="margin-bottom: 12px;">Choose <strong>one</strong> format. Both require a comparative analysis of an SMG policy or management issue with U.S. practices.</p>
+    <div class="two-col" style="max-width: 920px;">
+      <div>
+        <h3 style="margin-top: 0;">Option A: Written Report</h3>
+        <ul class="compact-list">
+          <li>15&ndash;20 pages, double spaced, APA 7th</li>
+          <li>Literature review with 15&ndash;20 scholarly sources</li>
+          <li>Methodology, findings, policy implications</li>
+        </ul>
+        <p style="font-size: 13px; color: var(--muted); margin-top: 8px; font-style: italic;">Suggested outline: Title &amp; Executive Summary (10%) &rarr; Introduction (10%) &rarr; Literature Review (focus on governance) &rarr; Methodology &rarr; Findings &amp; Conclusion &rarr; References</p>
+      </div>
+      <div>
+        <h3 style="margin-top: 0;">Option B: Video Report</h3>
+        <ul class="compact-list">
+          <li>15&ndash;20 min unlisted YouTube video</li>
+          <li>Must include <strong>field footage from Seoul</strong></li>
+          <li><strong>Narration and your face on camera required</strong></li>
+          <li>Sections: Intro (2&ndash;3 min) &rarr; Lit Review (3&ndash;5 min) &rarr; Seoul Case (5&ndash;7 min) &rarr; U.S. Comparison (3&ndash;4 min) &rarr; Conclusion (1&ndash;2 min)</li>
+          <li>Submit with a <strong>2&ndash;3 page supplementary doc</strong> (APA references, 10+ sources, 250-word abstract)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top: 12px; max-width: 920px;">
+      <strong>Due: 11:59 PM, Friday, June 20, 2026 via Webcourses</strong>
+      <p>Late projects will not be accepted. Videos and written reports may be published on the course website. Evaluated on: content &amp; analysis (40%), use of Seoul field experience (20%), organization &amp; clarity (15%), scholarly rigor (15%), production quality (10%).</p>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 6. RESEARCH TOPICS ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Introduction</div>
+    <h2>Research Topic Areas</h2>
+    <p class="lead" style="margin-bottom: 16px;">Relevant to Seoul Metropolitan Government (SMG)</p>
+    <div class="pill-grid">
+      <span class="pill">Aging</span>
+      <span class="pill">Infrastructure &amp; Development</span>
+      <span class="pill">Education</span>
+      <span class="pill">Quality of Life &amp; Public Health</span>
+      <span class="pill">Health Services</span>
+      <span class="pill">Social Welfare</span>
+      <span class="pill">Smart City</span>
+      <span class="pill">International Development</span>
+      <span class="pill">Social Innovation Networks</span>
+      <span class="pill">Women-Friendly Programs</span>
+      <span class="pill">Public Housing</span>
+      <span class="pill">IT &amp; E-Government</span>
+      <span class="pill">Green Policies</span>
+      <span class="pill">Emergency Management</span>
+      <span class="pill">Immigrant Integration</span>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 7. EXPECTATIONS ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Introduction</div>
+    <h2>Expectations</h2>
+    <div style="max-width: 700px; margin-top: 8px;">
+      <div class="expect-card">
+        <strong>Enjoy the course and the trip</strong>
+      </div>
+      <div class="expect-card">
+        <strong>Remember your duty and take responsibilities</strong>
+        <p>Please meet all the deadlines regardless of other courses.</p>
+      </div>
+      <div class="expect-card">
+        <strong>Please be open minded!</strong>
+        <p>Differences do not mean wrong. Be respectful for the culture, history, tradition, people, food, and the country.</p>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 8. SECTION: TRAVEL PLAN — Seoul Subway Photo ═══════ -->
+<section>
+  <div class="frame dark s-divider no-bar photo-bg" style="background-image: url('https://images.unsplash.com/photo-1437623889155-075d40e2e59f?auto=format&fit=crop&w=1920&q=80');">
+    <div class="gold-bar"></div>
+    <h2 style="color: var(--bg);">Travel Plan<br>&amp; Logistics</h2>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+    <span class="photo-credit">Photo: Unsplash</span>
+  </div>
+</section>
+
+<!-- ═══════ 9. TRAVEL DETAILS ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Travel</div>
+    <h2>Travel Plan</h2>
+    <ul>
+      <li><strong>Schedule:</strong> May 15 (hotel check-in) &ndash; May 23 (hotel check-out)</li>
+      <li><strong>SCSP Field Trip:</strong> May 17 &ndash; 22</li>
+      <li><strong>U.S. Participants:</strong> University of Central Florida, University of Georgia</li>
+      <li><strong>Meals:</strong> Breakfast and lunch provided by the host (May 17&ndash;22)</li>
+    </ul>
+    <div class="info-box">
+      <strong>Action Item</strong>
+      <p>Fill out the SCSP participants Excel file and send it back to me ASAP.</p>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 10. K-ETA ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Travel</div>
+    <h2>K-ETA</h2>
+    <p class="lead" style="margin-bottom: 12px;">Korea Electronic Travel Authorization</p>
+    <ul>
+      <li>No travel visa is required for US citizens</li>
+      <li><strong>K-ETA is required</strong> &mdash; apply as soon as possible</li>
+      <li>Website: <strong>k-eta.go.kr</strong></li>
+      <li>Print out the confirmation page (in case) for your trip</li>
+    </ul>
+    <div class="info-box" style="margin-top: 16px;">
+      <strong>Note:</strong>
+      <p>Check the K-ETA website for the latest requirements. Processing may take up to 72 hours.</p>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 11. PLANE TICKETS ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Travel</div>
+    <h2>Plane Tickets</h2>
+    <div class="two-col" style="max-width:900px;">
+      <div>
+        <ul>
+          <li><strong style="font-size: 20px;">Purchase now!</strong></li>
+          <li><strong>Route:</strong> MCO &rarr; ICN (Incheon International Airport)</li>
+          <li><strong>Must arrive on May 15 or before</strong></li>
+          <li>Mindful of time difference: <strong>13-hour difference</strong></li>
+          <li>You are arriving in S. Korea at least a day later</li>
+        </ul>
+      </div>
+      <div>
+        <div style="background: var(--dark); border-radius: 12px; padding: 24px; text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Time Difference</div>
+          <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+            <div>
+              <div style="font-family: var(--font-serif); font-size: 36px; color: var(--bg); font-style: italic;">7 PM</div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(250,250,247,0.4); margin-top: 4px;">ORLANDO (ET)</div>
+            </div>
+            <div style="font-size: 24px; color: var(--gold);">&rarr;</div>
+            <div>
+              <div style="font-family: var(--font-serif); font-size: 36px; color: var(--gold); font-style: italic;">8 AM</div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(250,250,247,0.4); margin-top: 4px;">SEOUL (KST) +1 DAY</div>
+            </div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 32px; color: rgba(250,250,247,0.6); margin-top: 16px; font-weight: 600;">+13h</div>
+        </div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 12. AIRPORT TRANSPORT ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Travel</div>
+    <h2>Airport Transportation</h2>
+    <p class="lead" style="margin-bottom: 16px;">Bus 6015 to hotel area</p>
+    <div class="two-col" style="max-width: 800px;">
+      <div class="pronun-card" style="border-left: 4px solid var(--gold);">
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Terminal 1</div>
+        <strong style="font-size: 18px; color: var(--text);">Platform 5B-1</strong>
+        <p style="font-size: 14px; color: var(--muted); margin-top: 4px;">Outside the arrival hall, 1st floor</p>
+      </div>
+      <div class="pronun-card" style="border-left: 4px solid var(--korean);">
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--korean); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Terminal 2</div>
+        <strong style="font-size: 18px; color: var(--text);">Platform 28</strong>
+        <p style="font-size: 14px; color: var(--muted); margin-top: 4px;">1 basement floor</p>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 13. HOTEL ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Travel</div>
+    <h2>Hotel</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 920px; margin-top: 8px;">
+      <!-- Left: Hotel card -->
+      <div style="background: var(--dark); border-radius: 16px; overflow: hidden;">
+        <div style="padding: 28px 28px 0;">
+          <div style="font-family: var(--font-mono); font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 8px;">Accommodation</div>
+          <div style="font-family: var(--font-serif); font-size: 30px; color: var(--bg); line-height: 1.15; letter-spacing: -0.02em;">Best Western<br>Premier Hotel Kukdo</div>
+          <a href="http://www.hotelkukdo.com" target="_blank" style="font-family: var(--font-mono); font-size: 12px; color: var(--gold); text-decoration: none; display: inline-block; margin-top: 8px; border-bottom: 1px solid rgba(255,201,4,0.3);">hotelkukdo.com &nearr;</a>
+        </div>
+        <div style="padding: 20px 28px 24px; margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.08);">
+          <div style="display: grid; grid-template-columns: 20px 1fr; gap: 8px 12px; align-items: start;">
+            <span style="color: var(--gold); font-size: 15px; margin-top: 1px;">&#9906;</span>
+            <span style="font-size: 15px; color: rgba(250,250,247,0.7); line-height: 1.45;">164 Euljiro, Jung-gu<br>Seoul 04548, Korea</span>
+            <span style="color: var(--gold); font-size: 15px; margin-top: 1px;">&#9742;</span>
+            <span style="font-size: 15px; color: rgba(250,250,247,0.7);">82-2-6466-1234</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Details grid -->
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 4px;">&#127860;</div>
+            <div style="font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: var(--text);">Breakfast</div>
+            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--translate); margin-top: 2px;">INCLUDED</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 4px;">&#128719;</div>
+            <div style="font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: var(--text);">Twin Room</div>
+            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-top: 2px;">SHARED &amp; ASSIGNED</div>
+          </div>
+        </div>
+        <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: flex; align-items: start; gap: 14px;">
+          <div style="font-size: 28px; flex-shrink: 0;">&#128197;</div>
+          <div>
+            <div style="font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: var(--text);">May 15 check-in &rarr; May 23 check-out</div>
+            <div style="font-size: 14px; color: var(--muted); margin-top: 2px;">8 nights</div>
+          </div>
+        </div>
+        <div style="background: rgba(185,28,28,0.05); border: 1px solid rgba(185,28,28,0.15); border-radius: 12px; padding: 18px 20px; display: flex; align-items: start; gap: 14px;">
+          <div style="font-size: 28px; flex-shrink: 0;">&#128232;</div>
+          <div>
+            <div style="font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: var(--korean);">Check-in Notification</div>
+            <div style="font-size: 14px; color: var(--muted); margin-top: 2px;">Email or text me as soon as you arrive and check in at the hotel.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 14. SCSP SCHEDULE ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Travel</div>
+    <h2>SCSP Field Trip Schedule</h2>
+    <p class="lead" style="font-size: 15px; margin-bottom: 12px;">35th Seoul Case Study Program &middot; May 17&ndash;22, 2026</p>
+    <div style="max-width: 900px;">
+      <div class="sched-row" style="border-bottom: 2px solid var(--text);">
+        <span class="sched-day">Day</span><span style="font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);">Program</span>
+      </div>
+      <div class="sched-row">
+        <span class="sched-day">Sun, May 17</span>
+        <div><span class="sched-title">Arrival &amp; Cultural Orientation</span><br><span class="sched-detail">Korean Culture Experience (@ UOS) &middot; Gyeongbok Gung</span></div>
+      </div>
+      <div class="sched-row">
+        <span class="sched-day">Mon, May 18</span>
+        <div><span class="sched-title">Public Transportation</span><br><span class="sched-detail">Orientation &middot; Lecture 1 &middot; Cheong Gye Chun Museum &middot; Seoul Emergency Op. Center &middot; Welcome Dinner</span></div>
+      </div>
+      <div class="sched-row">
+        <span class="sched-day">Tue, May 19</span>
+        <div><span class="sched-title">North Korea Issue &amp; Water Management</span><br><span class="sched-detail">Lectures 2&ndash;3 &middot; DDP &middot; TOPIS</span></div>
+      </div>
+      <div class="sched-row">
+        <span class="sched-day">Wed, May 20</span>
+        <div><span class="sched-title">Urban Planning &amp; Health Policy</span><br><span class="sched-detail">Lectures 4&ndash;5 &middot; Group Discussion</span></div>
+      </div>
+      <div class="sched-row">
+        <span class="sched-day">Thu, May 21</span>
+        <div><span class="sched-title">Resource Recovery &amp; Group Work</span><br><span class="sched-detail">Mapo Resource Recovery Center &middot; Group Discussion</span></div>
+      </div>
+      <div class="sched-row" style="border-bottom: none;">
+        <span class="sched-day">Fri, May 22</span>
+        <div><span class="sched-title">Joint Seminar &amp; Closing</span><br><span class="sched-detail">SCSP with IUDP &middot; Group Presentation &middot; Closing Ceremony &middot; SEOUL SKY</span></div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 15. SECTION: KOREAN GOVERNMENT — Gyeongbokgung ═══════ -->
+<section>
+  <div class="frame dark s-divider no-bar photo-bg overlay-heavy" style="background-image: url('https://images.unsplash.com/photo-1566800890932-e89159daf3dc?auto=format&fit=crop&w=1920&q=80');">
+    <div class="gold-bar"></div>
+    <h2 style="color: var(--bg);">Korean Government<br>&amp; Governance</h2>
+    <p class="lead" style="margin-top: 16px;">Discussion based on assigned readings</p>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+    <span class="photo-credit">Photo: Unsplash</span>
+  </div>
+</section>
+
+<!-- ═══════ 16. SECTION: BASIC KOREAN LANGUAGE — Cherry Blossom ═══════ -->
+<section>
+  <div class="frame dark s-divider no-bar photo-bg" style="background-image: url('https://images.unsplash.com/photo-1493084607638-3ebe6bb51264?auto=format&fit=crop&w=1920&q=80');">
+    <div class="gold-bar"></div>
+    <h2 style="color: var(--bg);">Basic Korean<br>Language</h2>
+    <p class="lead" style="margin-top: 16px;">Essential phrases for your Seoul trip</p>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+    <span class="photo-credit">Photo: Abbie Bernet / Unsplash</span>
+  </div>
+</section>
+
+<!-- ═══════ 17. KOREAN LANGUAGE OVERVIEW ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language</div>
+    <h2>Korean Language?</h2>
+    <div class="two-col">
+      <div>
+        <h3>Sentence Structure</h3>
+        <p style="font-size: 18px; color: var(--text);"><strong>S + O + adj + &hellip; adv + V!</strong></p>
+        <div style="background: var(--subtle); border-radius: 8px; padding: 14px 18px; margin-top: 8px; font-size: 15px;">
+          <div style="color: var(--muted); margin-bottom: 6px;">Example:</div>
+          <div><strong>"I pizza eat"</strong> instead of "I eat pizza"</div>
+          <div style="margin-top: 4px;"><span class="kr">나는 피자를 먹는다</span></div>
+        </div>
+        <h3>Intonation / Accent</h3>
+        <ul class="compact-list">
+          <li>Monotone</li>
+          <li>Depending on your mood</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Very Hierarchical Language</h3>
+        <ul class="compact-list">
+          <li>Word choices show social respect</li>
+          <li>Age is a very important determinant</li>
+        </ul>
+
+        <div style="margin-top: 20px;">
+          <h3>Hangul (한글)</h3>
+          <div style="background: var(--dark); border-radius: 12px; padding: 20px; text-align: center; margin-top: 8px;">
+            <div class="hangul-display" style="color: var(--bg);">ㄱ ㄴ ㄷ ㄹ ㅁ</div>
+            <div class="hangul-display" style="color: var(--gold); font-size: 48px; margin-top: 8px;">ㅂ ㅅ ㅇ ㅈ ㅎ</div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(250,250,247,0.4); margin-top: 10px; letter-spacing: 0.08em;">BASIC CONSONANTS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 18. LANGUAGE HIERARCHY ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language</div>
+    <h2>Language Hierarchy</h2>
+    <div style="max-width: 700px; margin-top: 8px;">
+      <div class="expect-card">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+          <span class="badge">Level 1</span>
+          <strong style="margin-bottom: 0;">Casual</strong>
+        </div>
+        <p>Use with friends or younger. Friend level, defined by school year (K1).</p>
+      </div>
+      <div class="expect-card">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+          <span class="badge">Level 2</span>
+          <strong style="margin-bottom: 0;">Polite / Informal</strong>
+        </div>
+        <p>Informal setting. Acquaintances: same age, younger, or older.</p>
+      </div>
+      <div class="expect-card" style="border-left-color: var(--korean); background: rgba(185,28,28,0.04);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+          <span class="badge red">Level 3</span>
+          <strong style="margin-bottom: 0;">Formal</strong>
+        </div>
+        <p>Business meeting, military, conference presentations&hellip; <strong>Always safe to use this one.</strong></p>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 19. YOUR GOAL ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language</div>
+    <h2>Your Goal for the Trip</h2>
+    <p class="lead" style="margin-bottom: 16px;">Practice <strong>Level 2 or 3</strong></p>
+    <div class="pill-grid" style="max-width: 500px;">
+      <span class="pill">Greetings</span>
+      <span class="pill">Introduction</span>
+      <span class="pill">Gratitude</span>
+      <span class="pill">Apology</span>
+      <span class="pill">Farewell</span>
+      <span class="pill">Shopping</span>
+      <span class="pill">Directions</span>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 20. GREETINGS: HELLO ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Greetings</div>
+    <h2>Hello / Hi</h2>
+    <div style="max-width: 700px;">
+      <div class="pronun-card" style="margin-bottom: 16px;">
+        <div class="level-label" style="margin-top: 0;">Level 1 — Casual</div>
+        <span class="kr-big" style="font-size: 32px;">An-Ni-eung!</span>
+        <div style="font-size: 28px; color: var(--korean); margin-top: 4px;">안녕!</div>
+      </div>
+      <div class="pronun-card" style="margin-bottom: 16px;">
+        <div class="level-label" style="margin-top: 0;">Level 2 — Polite</div>
+        <span class="kr-big" style="font-size: 32px;">An-Ni-eung-Ha-Se-Yo!</span>
+        <div style="font-size: 28px; color: var(--korean); margin-top: 4px;">안녕하세요!</div>
+      </div>
+      <div class="pronun-card" style="border-left: 4px solid var(--gold);">
+        <div class="level-label" style="margin-top: 0; color: var(--gold-dk);">Level 3 — Formal</div>
+        <span class="kr-big" style="font-size: 32px;">An-Ni-eung-Ha-Sim-Ni-KKa!</span>
+        <div style="font-size: 28px; color: var(--korean); margin-top: 4px;">안녕하십니까!</div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 21. NICE TO MEET YOU ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Greetings</div>
+    <h2>Nice / Glad / Pleasure to meet you</h2>
+    <div style="max-width: 700px;">
+      <div class="pronun-card" style="margin-bottom: 16px;">
+        <div class="level-label" style="margin-top: 0;">Level 2</div>
+        <span class="kr-big" style="font-size: 32px;">Man-Na-Seo, Ban-Ga-Wa-Yo.</span>
+        <div style="font-size: 24px; color: var(--korean); margin-top: 4px;">만나서 반가워요.</div>
+      </div>
+      <div class="pronun-card" style="border-left: 4px solid var(--gold);">
+        <div class="level-label" style="margin-top: 0; color: var(--gold-dk);">Level 3</div>
+        <span class="kr-big" style="font-size: 32px;">Man-Na-Seo, Ban-Gap-Seum-Ni-Da.</span>
+        <div style="font-size: 24px; color: var(--korean); margin-top: 4px;">만나서 반갑습니다.</div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 22. GREETINGS COMBO ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Greetings</div>
+    <h2>Greetings &mdash; Combination</h2>
+    <div style="max-width: 700px;">
+      <div class="pronun-card" style="margin-bottom: 20px; background: var(--subtle);">
+        <div class="level-label" style="margin-top: 0;">Level 2</div>
+        <span class="kr-big" style="font-size: 28px;">An-Ni-eung-Ha-Se-Yo!</span>
+        <span class="kr-big" style="font-size: 28px;">Man-Na-Seo, Ban-Ga-Wa-Yo.</span>
+        <div style="font-size: 20px; color: var(--korean); margin-top: 8px;">안녕하세요! 만나서 반가워요.</div>
+      </div>
+      <div class="pronun-card" style="border-left: 4px solid var(--gold); background: var(--gold-soft);">
+        <div class="level-label" style="margin-top: 0; color: var(--gold-dk);">Level 3</div>
+        <span class="kr-big" style="font-size: 28px;">An-Ni-eung-Ha-Sim-Ni-KKa!</span>
+        <span class="kr-big" style="font-size: 28px;">Man-Na-Seo, Ban-Gap-Seum-Ni-Da.</span>
+        <div style="font-size: 20px; color: var(--korean); margin-top: 8px;">안녕하십니까! 만나서 반갑습니다.</div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 23. SELF-INTRODUCTION ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Self-Introduction</div>
+    <h2>Introduction</h2>
+    <div style="max-width: 700px;">
+      <div class="pronun-card" style="margin-bottom: 16px;">
+        <p style="font-size: 18px; color: var(--text); margin-bottom: 8px;"><strong>I am (Last Name / First Name).</strong></p>
+        <span class="kr-xl">Jeo-neun (Name) Im-Ni-Da.</span>
+        <div style="font-size: 22px; color: var(--korean); margin-top: 4px;">저는 (Name) 입니다.</div>
+      </div>
+      <div class="pronun-card">
+        <p style="font-size: 18px; color: var(--text); margin-bottom: 8px;"><strong>My name is (Last / First Name).</strong></p>
+        <span class="kr-xl">Je-Yi-reum-eun, (Name) Im-Ni-Da.</span>
+        <div style="font-size: 22px; color: var(--korean); margin-top: 4px;">제 이름은, (Name) 입니다.</div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 24. LOOK FORWARD ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Self-Introduction</div>
+    <h2>Look forward to working /<br>talking / hanging out with you.</h2>
+    <div style="max-width: 700px; margin-top: 16px;">
+      <div class="pronun-card" style="border-left: 4px solid var(--gold); text-align: center; padding: 32px;">
+        <span class="kr-xl" style="font-size: 44px;">Jal-Bu-Tak-Drim-Ni-Da.</span>
+        <div style="font-size: 32px; color: var(--korean); margin-top: 8px;">잘 부탁드립니다.</div>
+        <span class="tr" style="font-size: 16px; margin-top: 12px;">(Please take good care of / look after me well)</span>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 25. INTRODUCTION COMBO ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Self-Introduction</div>
+    <h2>Introduction &mdash; Combination</h2>
+    <div style="max-width: 700px;">
+      <div class="pronun-card" style="margin-bottom: 16px; background: var(--subtle);">
+        <span class="kr-big">Jeo-neun (name) Im-Ni-Da.</span>
+        <span class="kr-big">Jal-Bu-Tak-Drim-Ni-Da.</span>
+        <div style="font-size: 18px; color: var(--korean); margin-top: 8px;">저는 (name) 입니다. 잘 부탁드립니다.</div>
+      </div>
+      <p style="margin: 12px 0; font-size: 16px; color: var(--muted); text-align: center;">Or</p>
+      <div class="pronun-card" style="background: var(--subtle);">
+        <span class="kr-big">Je-Yi-reum-eun (name) Im-Ni-Da.</span>
+        <span class="kr-big">Jal-Bu-Tak-Drim-Ni-Da.</span>
+        <div style="font-size: 18px; color: var(--korean); margin-top: 8px;">제 이름은 (name) 입니다. 잘 부탁드립니다.</div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 26. GRATITUDE ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Gratitude</div>
+    <h2>Thank You</h2>
+    <div style="max-width: 700px; margin-top: 16px;">
+      <div class="pronun-card" style="margin-bottom: 16px; text-align: center; padding: 28px;">
+        <span class="kr-xl" style="font-size: 40px;">Go-Mab-Seum-Ni-Da.</span>
+        <div style="font-size: 28px; color: var(--korean); margin-top: 6px;">고맙습니다.</div>
+      </div>
+      <div class="pronun-card" style="text-align: center; padding: 28px; border-left: 4px solid var(--gold); background: var(--gold-soft);">
+        <span class="kr-xl" style="font-size: 40px;">Gam-Sa-Ham-Ni-Da.</span>
+        <div style="font-size: 28px; color: var(--korean); margin-top: 6px;">감사합니다.</div>
+        <span class="tr" style="margin-top: 8px; font-size: 14px;">(More formal, often used in official settings)</span>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 27. APOLOGY ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Apology</div>
+    <h2>Apology</h2>
+    <div class="two-col" style="max-width: 700px; margin-top: 16px;">
+      <div class="pronun-card" style="text-align: center; padding: 28px;">
+        <p style="font-size: 18px; color: var(--text); margin-bottom: 12px;"><strong>I am sorry</strong></p>
+        <span class="kr-xl" style="font-size: 36px;">Mi-an-Ham-Ni-Da.</span>
+        <div style="font-size: 24px; color: var(--korean); margin-top: 6px;">미안합니다.</div>
+      </div>
+      <div class="pronun-card" style="text-align: center; padding: 28px;">
+        <p style="font-size: 18px; color: var(--text); margin-bottom: 12px;"><strong>Excuse me</strong></p>
+        <span class="kr-xl" style="font-size: 36px;">Shil-le-Ham-Ni-Da.</span>
+        <div style="font-size: 24px; color: var(--korean); margin-top: 6px;">실례합니다.</div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 28. FAREWELL ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Farewell</div>
+    <h2>Good-bye</h2>
+    <div style="max-width: 700px;">
+      <div class="pronun-card" style="margin-bottom: 12px;">
+        <div class="english" style="font-weight: 600; font-size: 17px; color: var(--text); margin-bottom: 8px;">When you leave the place (= "Stay well")</div>
+        <span class="kr-big" style="font-size: 28px;">An-Ni-eung-hi-Gye-Se-Yo.</span>
+        <div style="font-size: 22px; color: var(--korean); margin-top: 4px;">안녕히 계세요.</div>
+      </div>
+      <div class="pronun-card" style="margin-bottom: 12px;">
+        <div class="english" style="font-weight: 600; font-size: 17px; color: var(--text); margin-bottom: 8px;">When you stay in the place (= "Leave well")</div>
+        <span class="kr-big" style="font-size: 28px;">An-Ni-eung-hi-Ga-Se-Yo.</span>
+        <div style="font-size: 22px; color: var(--korean); margin-top: 4px;">안녕히 가세요.</div>
+      </div>
+      <div class="pronun-card">
+        <div class="english" style="font-weight: 600; font-size: 17px; color: var(--text); margin-bottom: 8px;">See you again (Level 2)</div>
+        <span class="kr-big" style="font-size: 28px;">Tto-Man-Na-Yo.</span>
+        <div style="font-size: 22px; color: var(--korean); margin-top: 4px;">또 만나요.</div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 29. FAREWELL COMBO ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Farewell</div>
+    <h2>Farewell &mdash; Combination</h2>
+    <div style="max-width: 700px;">
+      <div class="pronun-card" style="margin-bottom: 16px; background: var(--subtle);">
+        <span class="kr-big">An-Ni-eung-hi-Gye-Se-Yo, Tto-Man-Na-Yo.</span>
+        <div style="font-size: 20px; color: var(--korean); margin-top: 4px;">안녕히 계세요, 또 만나요.</div>
+        <span class="tr">(you stay well, see you again)</span>
+      </div>
+      <div class="pronun-card" style="background: var(--subtle);">
+        <span class="kr-big">An-Ni-eung-hi-Ga-Se-Yo, Tto-Man-Na-Yo.</span>
+        <div style="font-size: 20px; color: var(--korean); margin-top: 4px;">안녕히 가세요, 또 만나요.</div>
+        <span class="tr">(you leave well, see you again)</span>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 30. SHOPPING ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Shopping</div>
+    <h2>How much?</h2>
+    <div style="max-width: 700px; margin-top: 12px;">
+      <div class="pronun-card" style="margin-bottom: 12px;">
+        <div class="english" style="font-weight: 600; font-size: 17px; color: var(--text); margin-bottom: 8px;">How much is this?</div>
+        <span class="kr-big" style="font-size: 30px;">Yi-Geo-Eol-ma-Eh-Yo?</span>
+        <div style="font-size: 22px; color: var(--korean); margin-top: 4px;">이거 얼마예요?</div>
+        <span class="tr">Yi-geo = this thing</span>
+      </div>
+      <div class="pronun-card">
+        <div class="english" style="font-weight: 600; font-size: 17px; color: var(--text); margin-bottom: 8px;">How much is that?</div>
+        <span class="kr-big" style="font-size: 30px;">Jeo-Geo-Eol-ma-Eh-Yo?</span>
+        <div style="font-size: 22px; color: var(--korean); margin-top: 4px;">저거 얼마예요?</div>
+        <span class="tr">Jeo-geo = that thing</span>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 31. DIRECTIONS ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Korean Language · Directions</div>
+    <h2>Where is ~~~?</h2>
+    <div style="max-width: 700px;">
+      <div class="pronun-card" style="text-align: center; padding: 24px; margin-bottom: 16px; border-left: 4px solid var(--gold);">
+        <span class="kr-xl" style="font-size: 40px;">~~~ Uh-Di-Eh-Yo?</span>
+        <div style="font-size: 26px; color: var(--korean); margin-top: 4px;">~~~ 어디예요?</div>
+        <span class="tr" style="font-size: 16px;">Where is ~~~~???</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div class="pronun-card" style="padding: 12px 16px;">
+          <span class="kr" style="font-size: 18px;">Yeo-Gi</span> <span style="font-size: 16px; color: var(--korean); margin-left: 4px;">여기</span> <span class="tr" style="display: inline; font-size: 14px;">(here)</span>
+        </div>
+        <div class="pronun-card" style="padding: 12px 16px;">
+          <span class="kr" style="font-size: 18px;">Hwa-Jang-Shil</span> <span style="font-size: 16px; color: var(--korean); margin-left: 4px;">화장실</span> <span class="tr" style="display: inline; font-size: 14px;">(restroom)</span>
+        </div>
+        <div class="pronun-card" style="padding: 12px 16px;">
+          <span class="kr" style="font-size: 18px;">Ji-Ha-Cheol-Yeok</span> <span style="font-size: 16px; color: var(--korean); margin-left: 4px;">지하철역</span> <span class="tr" style="display: inline; font-size: 14px;">(subway station)</span>
+        </div>
+        <div class="pronun-card" style="padding: 12px 16px;">
+          <span class="kr" style="font-size: 18px;">Shik-dang</span> <span style="font-size: 16px; color: var(--korean); margin-left: 4px;">식당</span> <span class="tr" style="display: inline; font-size: 14px;">(restaurant)</span>
+        </div>
+        <div class="pronun-card" style="padding: 12px 16px; grid-column: span 2;">
+          <span class="kr" style="font-size: 18px;">Bak-Hwa-Jeom</span> <span style="font-size: 16px; color: var(--korean); margin-left: 4px;">백화점</span> <span class="tr" style="display: inline; font-size: 14px;">(department store)</span>
+        </div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 32. SECTION: SOUTH KOREAN CULTURE — Hanbok at Palace ═══════ -->
+<section>
+  <div class="frame dark s-divider no-bar photo-bg" style="background-image: url('https://images.unsplash.com/photo-1762267616547-6d6cd4adabc3?auto=format&fit=crop&w=1920&q=80');">
+    <div class="gold-bar"></div>
+    <h2 style="color: var(--bg);">South Korean<br>Culture</h2>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+    <span class="photo-credit">Photo: Unsplash</span>
+  </div>
+</section>
+
+<!-- ═══════ 33. S. KOREA OVERVIEW — Split Layout ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Culture</div>
+    <h2>S. Korea</h2>
+    <div class="two-col" style="max-width: 900px;">
+      <div>
+        <p style="font-size: 16px; color: var(--text); line-height: 1.6; font-weight: 600;">
+          Very small, not many resources, Japanese colonial, Korean war, dictatorship, and Korean style democracy&hellip;
+        </p>
+        <ul class="compact-list">
+          <li>Very strong desire to success (investment in education)</li>
+          <li>Competition everywhere &mdash; just do it, do it well &amp; very fast</li>
+          <li>Everybody is busy working</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Confucianism vs Modern Culture</h3>
+        <ul class="compact-list">
+          <li>Very communal and collectivistic</li>
+          <li>Strong social norm, hierarchical</li>
+          <li>Also very strong individualism</li>
+          <li>Do not bother others</li>
+        </ul>
+        <div style="margin-top: 16px; background: var(--dark); border-radius: 12px; padding: 20px; text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px;">South Korea at a glance</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <div style="font-family: var(--font-serif); font-size: 28px; color: var(--bg); font-style: italic;">51.7M</div>
+              <div style="font-family: var(--font-mono); font-size: 10px; color: rgba(250,250,247,0.4);">POPULATION</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-serif); font-size: 28px; color: var(--gold); font-style: italic;">9.7M</div>
+              <div style="font-family: var(--font-mono); font-size: 10px; color: rgba(250,250,247,0.4);">SEOUL POP.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 34. CULTURAL NORMS ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Culture</div>
+    <h2>S. Korea has its own things,<br>just like all other countries</h2>
+    <p style="font-size: 17px; color: var(--text); font-weight: 600; margin-bottom: 8px;">Please do not feel offended by:</p>
+    <div class="norm-grid" style="max-width: 800px;">
+      <div class="norm-item">People asking your age</div>
+      <div class="norm-item">People walking fast and overtaking without saying "Excuse me"</div>
+      <div class="norm-item">People slightly pushing you on the street or in the subway</div>
+      <div class="norm-item">People not holding doors for you</div>
+      <div class="norm-item">People staring at you</div>
+      <div class="norm-item">People not smiling back to you</div>
+      <div class="norm-item">People covering their mouths when they laugh/speak</div>
+      <div class="norm-item">People not making eye contact when talking to you</div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 35. WHEN YOU TRAVEL ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Culture</div>
+    <h2>When you travel to other countries&hellip;</h2>
+    <div style="max-width: 700px;">
+      <div class="expect-card" style="border-left-color: var(--korean); background: rgba(185,28,28,0.04);">
+        <strong>Do NOT use your U.S. framework / standard</strong>
+        <p>But, try to understand or at least to see.</p>
+      </div>
+      <ul>
+        <li>Everybody is different/unique &mdash; please do not stereotype people, culture, or social/political system</li>
+        <li>Remember, your experience is just a sample of one &mdash; do not generalize your opinion</li>
+        <li><strong>Be open minded, and respectful</strong></li>
+        <li>If you do not know what to do, observe what people do at the moment and imitate</li>
+      </ul>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 36. THINGS TO TRY — with Market Photo ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Culture</div>
+    <h2>What else you can do?</h2>
+    <div class="two-col" style="max-width: 900px;">
+      <div>
+        <ul>
+          <li><strong>Try some Korean food</strong> that you have never tasted/known
+            <ul><li>At least something other than Bibimbap/Bulgogi</li></ul>
+          </li>
+          <li>Visit <strong>Dongdaemun night market</strong> area</li>
+          <li>Use <strong>public transportation</strong> (subway &amp; buses)
+            <ul>
+              <li>Buy a transit card during the visit</li>
+              <li>Transfer discount across public transportation within 30 mins (except taxi)</li>
+            </ul>
+          </li>
+          <li>Visit other areas (only if you can take the time)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="img-card" style="overflow: hidden; border-radius: 12px;">
+          <img src="https://images.unsplash.com/photo-1628532431030-3b6d433ed166?auto=format&fit=crop&w=600&h=400&q=80" alt="Korean market" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+          <div style="padding: 12px 16px; background: var(--dark);">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold); letter-spacing: 0.08em;">DONGDAEMUN MARKET AREA</div>
+            <div style="font-size: 13px; color: rgba(250,250,247,0.5); margin-top: 2px;">Street food, shopping &amp; nightlife</div>
+          </div>
+        </div>
+        <div class="img-card" style="overflow: hidden; border-radius: 12px; margin-top: 12px;">
+          <img src="https://images.unsplash.com/photo-1751228112868-a0dd33ded0fe?auto=format&fit=crop&w=600&h=300&q=80" alt="Bukchon Hanok Village" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+          <div style="padding: 12px 16px; background: var(--dark);">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold); letter-spacing: 0.08em;">BUKCHON HANOK VILLAGE</div>
+            <div style="font-size: 13px; color: rgba(250,250,247,0.5); margin-top: 2px;">Traditional Korean architecture</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ KOREAN PRONUNCIATION VIDEO ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Bonus · Korean Pronunciation</div>
+    <h2>Hear it in action</h2>
+    <p class="lead" style="margin-bottom: 8px;">Watch this short intro to Korean pronunciation before the trip.</p>
+    <div class="two-col" style="max-width: 920px;">
+      <div>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/s5aobqyEaMQ?rel=0" title="Learn Korean Pronunciation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-top: 0;">Quick Practice</h3>
+        <div class="pronun-card" style="padding: 14px 18px; margin-bottom: 8px;">
+          <div style="font-size: 15px; color: var(--muted);">Hello (formal)</div>
+          <div style="font-size: 20px; color: var(--korean); font-weight: 700;">안녕하십니까</div>
+        </div>
+        <div class="pronun-card" style="padding: 14px 18px; margin-bottom: 8px;">
+          <div style="font-size: 15px; color: var(--muted);">Thank you</div>
+          <div style="font-size: 20px; color: var(--korean); font-weight: 700;">감사합니다</div>
+        </div>
+        <div class="pronun-card" style="padding: 14px 18px; margin-bottom: 8px;">
+          <div style="font-size: 15px; color: var(--muted);">Excuse me</div>
+          <div style="font-size: 20px; color: var(--korean); font-weight: 700;">실례합니다</div>
+        </div>
+        <div class="pronun-card" style="padding: 14px 18px;">
+          <div style="font-size: 15px; color: var(--muted);">How much?</div>
+          <div style="font-size: 20px; color: var(--korean); font-weight: 700;">얼마예요?</div>
+        </div>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ SESSION 2 DATE ═══════ -->
+<section>
+  <div class="frame content-slide">
+    <div class="tag">Next Steps</div>
+    <h2>Session 2 &mdash; Let's Pick a Date</h2>
+    <p class="lead" style="margin-bottom: 16px;">Research Proposal presentations &amp; trip prep. We need to find a date/time that works for everyone.</p>
+    <div style="max-width: 700px;">
+      <div class="expect-card" style="border-left-color: var(--korean); background: rgba(185,28,28,0.04);">
+        <strong>Currently scheduled: Saturday, May 9</strong>
+        <p>In-class session &middot; 10:00 AM &ndash; 12:00 PM</p>
+      </div>
+      <h3>What we'll cover</h3>
+      <ul class="compact-list">
+        <li><strong>Research Proposal presentations</strong> (informal, Q&amp;A)</li>
+        <li>Seoul Metropolitan Government overview</li>
+        <li>Transportation: subway &amp; bus systems</li>
+        <li>Final trip arrangements &amp; logistics</li>
+      </ul>
+      <div class="info-box" style="margin-top: 16px;">
+        <strong>Please share your availability</strong>
+        <p>Let's decide on the date and time together tonight. This is the last meeting before Seoul!</p>
+      </div>
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 37. QUESTIONS ═══════ -->
+<section>
+  <div class="frame dark s-divider no-bar photo-bg overlay-center" style="background-image: url('https://images.unsplash.com/photo-1546874177-9e664107314e?auto=format&fit=crop&w=1920&q=80'); background-position: center 60%;">
+    <div class="gold-bar"></div>
+    <h2 style="color: var(--bg);">Questions?</h2>
+    <p class="lead" style="margin-top: 16px; color: rgba(250,250,247,0.6);">질문 있으신가요?</p>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+  </div>
+</section>
+
+<!-- ═══════ 38. CLOSING ═══════ -->
+<section>
+  <div class="frame dark s-closing no-bar photo-bg overlay-heavy" style="background-image: url('https://images.unsplash.com/photo-1546874177-9e664107314e?auto=format&fit=crop&w=1920&q=80'); background-position: center 40%;">
+    <h2>See you at <span class="em">Session 2</span></h2>
+    <p class="cp">Research Proposals &amp; Trip Prep<br>Date &amp; time to be confirmed tonight</p>
+    <div style="display: flex; gap: 12px; justify-content: center; margin-top: 8px;">
+      <span class="badge" style="background: rgba(255,201,4,0.2); color: var(--gold); font-size: 13px; padding: 6px 16px;">감사합니다</span>
+    </div>
+    <div class="signature">
+      Dr. Seongho An &middot; Seongho.An@ucf.edu &middot; DPAC 448D<br>
+      UCF School of Public Administration
+    </div>
+    <div class="deck-footer">PAD 6958 · Summer 2026</div>
+    <span class="photo-credit">Photo: Yohan Cho / Unsplash</span>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script type="module">
+import Reveal from 'https://unpkg.com/reveal.js@5.1.0/dist/reveal.esm.js';
+
+Reveal.initialize({
+  hash: true,
+  slideNumber: true,
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  width: 1280,
+  height: 800,
+  margin: 0,
+  center: false,
+  controls: true,
+  progress: true,
+  history: true,
+  overview: true,
+  keyboard: true,
+  hideCursorTime: 2000,
+});
+</script>
+
+</body>
+</html>
