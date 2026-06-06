@@ -568,6 +568,45 @@
         }
 
         /* ═══════════════════════════════════════
+           GALLERY
+           ═══════════════════════════════════════ */
+        .gallery-intro {
+            font-size: var(--text-sm);
+            color: var(--text-2);
+            margin-bottom: var(--space-element);
+            max-width: var(--content-width);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-tight);
+        }
+
+        .gallery figure {
+            margin: 0;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--surface);
+        }
+
+        .gallery img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: var(--bg);
+        }
+
+        .gallery figcaption {
+            font-size: var(--text-xs);
+            color: var(--text-2);
+            padding: var(--space-xs) var(--space-tight);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ═══════════════════════════════════════
            LINKS
            ═══════════════════════════════════════ */
         .links-list { list-style: none; }
@@ -704,6 +743,8 @@
 
             .reading-list li { padding-left: 1.8rem; }
             .reading-list li::before { width: 1.2rem; height: 1.2rem; }
+
+            .gallery { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* Focus for accessibility */
@@ -727,6 +768,7 @@
             <li><a href="#schedule">Schedule</a></li>
             <li><a href="#syllabus">Syllabus</a></li>
             <li><a href="#materials">Materials</a></li>
+            <li><a href="#gallery">Photos</a></li>
             <li><a href="#reports">Reports</a></li>
             <li><a href="#links">Links</a></li>
         </ul>
@@ -1079,6 +1121,61 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- ─── PHOTO GALLERY ─── -->
+    <section id="gallery">
+        <h2 class="section-title">Program Photos</h2>
+        <p class="gallery-intro">
+            Scenes from the 2026 Seoul Case Study Program — field visits to Seoul's
+            governance and infrastructure sites, classroom lectures at the University
+            of Seoul, and cultural experiences across the city (May 16–22, 2026).
+        </p>
+
+        <div class="gallery">
+            <figure>
+                <img src="Resources/photos/01-cultural-hanbok-gyeongbokgung.jpg" alt="Group wearing hanbok in front of Gyeongbokgung Palace" loading="lazy">
+                <figcaption>Wearing hanbok at Gyeongbokgung Palace</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/03-group-field-visit.jpg" alt="Group photo at the Mapo Resource Recovery Plant" loading="lazy">
+                <figcaption>Field visit to the Mapo Resource Recovery Plant</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/06-topis-traffic-center.jpg" alt="Group at the Seoul TOPIS traffic control center" loading="lazy">
+                <figcaption>Seoul TOPIS traffic management center</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/04-energy-facility-tour.jpg" alt="Students viewing an energy facility model exhibit" loading="lazy">
+                <figcaption>Energy facility exhibit tour</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/08-classroom-lecture.jpg" alt="Lecture on Seoul and Seoul transportation" loading="lazy">
+                <figcaption>Lecture: Seoul and Seoul Transportation</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/05-lecture-auditorium.jpg" alt="Lecture in an auditorium at a Seoul museum" loading="lazy">
+                <figcaption>Lecture at the Cheonggyecheon Museum</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/02-korean-culture-experience.jpg" alt="Traditional hanbok fitting experience" loading="lazy">
+                <figcaption>Korean cultural experience</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/07-seoul-cityscape.jpg" alt="Students exploring Seoul Square with the Seoul, My Soul installation" loading="lazy">
+                <figcaption>Exploring the city — "Seoul, My Soul"</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/09-city-exploration.jpg" alt="Group walking through Seoul streets" loading="lazy">
+                <figcaption>Walking tour of Seoul's neighborhoods</figcaption>
+            </figure>
+            <figure>
+                <img src="Resources/photos/10-closing-ceremony.jpg" alt="Closing ceremony of the 2026 Seoul Case Study Program" loading="lazy">
+                <figcaption>Closing ceremony of the program</figcaption>
+            </figure>
         </div>
     </section>
 
